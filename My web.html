@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tanzil | Personal Universe</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap');
+
+:root {
+    --bg: #050b18;
+    --card: #0b1730;
+    --card2: #101f3d;
+    --blue: #2675ff;
+    --cyan: #00c8ff;
+    --text: #edf4ff;
+    --muted: #8da2c5;
+    --border: rgba(80,140,255,0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: #0755ff;
+    filter: blur(180px);
+    opacity: 0.13;
+    top: -200px;
+    left: -100px;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: #00aaff;
+    filter: blur(180px);
+    opacity: 0.08;
+    bottom: -200px;
+    right: -100px;
+    z-index: -1;
+}
+
+/* NAVBAR */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    border-bottom: 1px solid var(--border);
+    background: rgba(5,11,24,0.8);
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    color: var(--cyan);
+    font-weight: 800;
+}
+
+nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--cyan);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    padding: 80px 10%;
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.tag {
+    color: var(--cyan);
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 8vw, 85px);
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.hero h1 span {
+    color: var(--cyan);
+}
+
+.hero p {
+    color: var(--muted);
+    margin-top: 25px;
+    line-height: 1.9;
+    max-width: 600px;
+}
+
+.hero-buttons {
+    margin-top: 35px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+
+.primary {
+    background: var(--blue);
+    color: white;
+}
+
+.secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,100,255,0.25);
+}
+
+/* SECTION */
+
+section {
+    padding: 65px 9%;
+}
+
+.section-title {
+    margin-bottom: 35px;
+}
+
+.section-title small {
+    color: var(--cyan);
+    letter-spacing: 3px;
+    font-size: 11px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    margin-top: 12px;
+}
+
+/* CARDS */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    gap: 20px;
+}
+
+.card {
+    background: linear-gradient(145deg,#0d1b36,#091326);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 27px;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: var(--blue);
+    box-shadow: 0 15px 40px rgba(0,70,200,0.12);
+}
+
+.card-icon {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.card .more {
+    display: block;
+    color: var(--cyan);
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+/* STATS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap: 15px;
+}
+
+.stat {
+    text-align: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.stat h2 {
+    font-size: 30px;
+    color: var(--cyan);
+    margin-bottom: 8px;
+}
+
+.stat p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* CALCULATOR */
+
+.calculator {
+    max-width: 400px;
+    margin: auto;
+    padding: 25px;
+    background: #0b1730;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+}
+
+.calc-display {
+    width: 100%;
+    height: 90px;
+    background: #050c1a;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: white;
+    font-size: 30px;
+    text-align: right;
+    padding: 15px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+
+.calc-buttons button {
+    height: 60px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #142442;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.calc-buttons button:hover {
+    background: var(--blue);
+}
+
+.calc-buttons .operator {
+    color: var(--cyan);
+}
+
+.calc-buttons .equal {
+    background: var(--blue);
+}
+
+.calc-buttons .clear {
+    color: #ff6577;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: #0c1a35;
+    border: 1px solid var(--blue);
+    max-width: 650px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 35px;
+    border-radius: 18px;
+    animation: appear 0.3s ease;
+}
+
+@keyframes appear {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    color: var(--cyan);
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    color: #b2c4e3;
+    line-height: 2;
+    font-size: 14px;
+    white-space: pre-line;
+}
+
+.close {
+    float: right;
+    background: #162b50;
+    border: none;
+    color: white;
+    padding: 8px 13px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 40px 15px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 2;
+}
+
+footer span {
+    color: var(--cyan);
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    nav {
+        padding: 18px 5%;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav ul a {
+        font-size: 10px;
+    }
+
+    .hero {
+        padding: 75px 7%;
+        min-height: 450px;
+    }
+
+    section {
+        padding: 50px 6%;
+    }
+
+    .section-title h2 {
+        font-size: 26px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">TANZIL.</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#interests">Interests</a></li>
+        <li><a href="#calculator">Calculator</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- HERO SECTION -->
+
+<header class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="tag">WELCOME TO MY UNIVERSE</div>
+
+        <h1>
+            I'm <span>Tanzil.</span><br>
+            Beyond Ordinary.
+        </h1>
+
+        <p>
+            A student, gamer, technology enthusiast and
+            an ambitious individual exploring different
+            possibilities of life.
+
+            This is my personal digital universe.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#about" class="btn primary">
+                Explore My World
+            </a>
+
+            <a href="#interests" class="btn secondary">
+                My Interests
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="section-title">
+
+        <small>01 / INTRODUCTION</small>
+
+        <h2>Who Am I?</h2>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card" onclick="openModal('personality')">
+
+            <div class="card-icon">🧠</div>
+
+            <h3>Personality</h3>
+
+            <p>
+                Curious mind, independent thinking
+                and an interest in understanding life.
+            </p>
+
+            <span class="more">EXPLORE MORE →</span>
+
+        </div>
+
+
+        <div class="card" onclick="openModal('education')">
+
+            <div class="card-icon">🎓</div>
+
+            <h3>Education</h3>
+
+            <p>
+                Currently pursuing higher secondary
+                education in the Commerce stream.
+            </p>
+
+            <span class="more">EXPLORE MORE →</span>
+
+        </div>
+
+
+        <div class="card" onclick="openModal('ambition')">
+
+            <div class="card-icon">🚀</div>
+
+            <h3>Ambitions</h3>
+
+            <p>
+                Building a future around knowledge,
+                financial freedom and independence.
+            </p>
+
+            <span class="more">EXPLORE MORE →</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INTERESTS -->
+
+<section id="interests">
+
+    <div class="section-title">
+
+        <small>02 / MY WORLD</small>
+
+        <h2>Things I Love</h2>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card" onclick="openModal('gaming')">
+
+            <div class="card-icon">🎮</div>
+
+            <h3>Gaming</h3>
+
+            <p>
+                Competitive FPS, survival games,
+                open worlds and story-driven adventures.
+            </p>
+
+            <span class="more">EXPLORE MORE →</span>
+
+        </div>
+
+
+        <div class="card" onclick="openModal('technology')">
+
+            <div class="card-icon">💻</div>
+
+            <h3>Technology</h3>
+
+            <p>
+                PC hardware, programming,
+                AI and exploring new technologies.
+            </p>
+
+            <span class="more">EXPLORE MORE →</span>
+
+        </div>
+
+
+        <div class="card" onclick="openModal('coding')">
+
+            <div class="card-icon">⌨️</div>
+
+            <h3>Programming</h3>
+
+            <p>
+                Python, HTML, CSS and JavaScript.
+                Interested in creating digital projects.
+            </p>
+
+            <span class="more">EXPLORE MORE →</span>
+
+        </div>
+
+
+        <div class="card" onclick="openModal('fitness')">
+
+            <div class="card-icon">🏋️</div>
+
+            <h3>Fitness</h3>
+
+            <p>
+                Strength, endurance, cardio
+                and building a consistent lifestyle.
+            </p>
+
+            <span class="more">EXPLORE MORE →</span>
+
+        </div>
+
+
+        <div class="card" onclick="openModal('psychology')">
+
+            <div class="card-icon">🧩</div>
+
+            <h3>Psychology</h3>
+
+            <p>
+                Human behaviour, emotions,
+                personality and the human mind.
+            </p>
+
+            <span class="more">EXPLORE MORE →</span>
+
+        </div>
+
+
+        <div class="card" onclick="openModal('adventure')">
+
+            <div class="card-icon">🏔️</div>
+
+            <h3>Adventure</h3>
+
+            <p>
+                Exploring nature, mountains
+                and challenging adventures.
+            </p>
+
+            <span class="more">EXPLORE MORE →</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GAMING STATS -->
+
+<section>
+
+    <div class="section-title">
+
+        <small>03 / GAMING PROFILE</small>
+
+        <h2>My Gaming Universe</h2>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <h2>CS2</h2>
+            <p>Competitive FPS</p>
+        </div>
+
+        <div class="stat">
+            <h2>Valorant</h2>
+            <p>Tactical Shooter</p>
+        </div>
+
+        <div class="stat">
+            <h2>Minecraft</h2>
+            <p>Survival & Building</p>
+        </div>
+
+        <div class="stat">
+            <h2>PUBG</h2>
+            <p>Battle Royale</p>
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="grid">
+
+        <div class="card" onclick="openModal('cs2')">
+            <div class="card-icon">🔫</div>
+            <h3>Counter-Strike 2</h3>
+            <p>One of my favourite competitive games.</p>
+            <span class="more">VIEW DETAILS →</span>
+        </div>
+
+        <div class="card" onclick="openModal('minecraft')">
+            <div class="card-icon">⛏️</div>
+            <h3>Minecraft</h3>
+            <p>My survival world and custom base.</p>
+            <span class="more">VIEW DETAILS →</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PC SECTION -->
+
+<section>
+
+    <div class="section-title">
+
+        <small>04 / HARDWARE</small>
+
+        <h2>My PC Setup</h2>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card" onclick="openModal('pc')">
+
+            <div class="card-icon">🖥️</div>
+
+            <h3>My Desktop</h3>
+
+            <p>
+                Ryzen-powered PC with Intel Arc graphics.
+            </p>
+
+            <span class="more">VIEW SPECIFICATIONS →</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FUTURE -->
+
+<section>
+
+    <div class="section-title">
+
+        <small>05 / THE FUTURE</small>
+
+        <h2>Where I Want To Go</h2>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card" onclick="openModal('business')">
+
+            <div class="card-icon">💰</div>
+
+            <h3>Business & Finance</h3>
+
+            <p>
+                Entrepreneurship, investing
+                and financial independence.
+            </p>
+
+            <span class="more">EXPLORE MORE →</span>
+
+        </div>
+
+
+        <div class="card" onclick="openModal('abroad')">
+
+            <div class="card-icon">🌍</div>
+
+            <h3>International Future</h3>
+
+            <p>
+                Exploring higher education
+                and opportunities abroad.
+            </p>
+
+            <span class="more">EXPLORE MORE →</span>
+
+        </div>
+
+
+        <div class="card" onclick="openModal('mountains')">
+
+            <div class="card-icon">🏔️</div>
+
+            <h3>Mountain Dreams</h3>
+
+            <p>
+                A long-term dream of exploring
+                some of the world's highest mountains.
+            </p>
+
+            <span class="more">EXPLORE MORE →</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CALCULATOR -->
+
+<section id="calculator">
+
+    <div class="section-title">
+
+        <small>06 / UTILITY</small>
+
+        <h2>Simple Calculator</h2>
+
+    </div>
+
+    <div class="calculator">
+
+        <input
+            type="text"
+            class="calc-display"
+            id="display"
+            placeholder="0"
+            readonly
+        >
+
+        <div class="calc-buttons">
+
+            <button class="clear" onclick="clearDisplay()">AC</button>
+            <button class="operator" onclick="del()">DEL</button>
+            <button class="operator" onclick="add('%')">%</button>
+            <button class="operator" onclick="add('/')">÷</button>
+
+            <button onclick="add('7')">7</button>
+            <button onclick="add('8')">8</button>
+            <button onclick="add('9')">9</button>
+            <button class="operator" onclick="add('*')">×</button>
+
+            <button onclick="add('4')">4</button>
+            <button onclick="add('5')">5</button>
+            <button onclick="add('6')">6</button>
+            <button class="operator" onclick="add('-')">−</button>
+
+            <button onclick="add('1')">1</button>
+            <button onclick="add('2')">2</button>
+            <button onclick="add('3')">3</button>
+            <button class="operator" onclick="add('+')">+</button>
+
+            <button onclick="add('0')">0</button>
+            <button onclick="add('.')">.</button>
+            <button onclick="add('(')">(</button>
+            <button onclick="add(')')">)</button>
+
+            <button class="equal" style="grid-column:span 4"
+                onclick="calculate()">=</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal" onclick="outsideClose(event)">
+
+    <div class="modal-content">
+
+        <button class="close" onclick="closeModal()">✕</button>
+
+        <h2 id="modalTitle"></h2>
+
+        <p id="modalText"></p>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2 style="color:#00c8ff;font-family:Orbitron">
+        TANZIL.
+    </h2>
+
+    <p>
+        A personal universe built with HTML, CSS & JavaScript.
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 Tanzil | All Rights Reserved
+    </p>
+
+    <p>Designed in <span>Dark Blue.</span></p>
+
+</footer>
+
+
+<script>
+
+/* PERSONAL INFORMATION DATABASE */
+
+const information = {
+
+personality: {
+    title: "🧠 My Personality",
+    text: `
+I am Tanzil.
+
+I enjoy exploring new ideas, understanding
+different perspectives and learning about
+how the world works.
+
+I value independent thinking and personal freedom.
+
+I have many interests and ambitions.
+I am still discovering my strengths and
+working towards becoming a better version of myself.
+`
+},
+
+education: {
+    title: "🎓 Education",
+    text: `
+EDUCATIONAL JOURNEY
+
+• Completed SSC.
+• SSC GPA: 4.17
+• Academic background: Science.
+• Current academic stream: Commerce.
+• Currently pursuing HSC.
+
+FUTURE INTERESTS
+
+• Psychology.
+• Business and Finance.
+• Higher education.
+• Professional skill development.
+
+My goal is to combine education with practical skills.
+`
+},
+
+ambition: {
+    title: "🚀 My Ambitions",
+    text: `
+I want to build a life where I have freedom,
+knowledge, financial stability and independence.
+
+Some of my ambitions:
+
+• Become financially independent.
+• Build a successful business.
+• Develop valuable technical skills.
+• Explore international opportunities.
+• Continue learning throughout life.
+
+I believe progress comes from consistent effort.
+`
+},
+
+gaming: {
+    title: "🎮 Gaming",
+    text: `
+Gaming is one of my biggest interests.
+
+MY FAVOURITES:
+
+1. Counter-Strike 2
+2. Valorant
+3. Minecraft
+4. PUBG Mobile
+5. God of War
+6. Call of Duty
+
+I particularly enjoy competitive FPS games,
+survival games and story-driven experiences.
+
+I also enjoy experimenting with game settings,
+mods and performance optimization.
+`
+},
+
+technology: {
+    title: "💻 Technology",
+    text: `
+Technology is one of my strongest interests.
+
+I enjoy learning about:
+
+• PC hardware.
+• Graphics cards.
+• Processors.
+• RAM and SSDs.
+• AI technologies.
+• Cybersecurity.
+• Software and applications.
+
+I also enjoy building and upgrading computers.
+
+MY CURRENT PC:
+
+Ryzen 5 5600
+Intel Arc A380
+16GB DDR4 RAM
+512GB SSD
+Windows 11
+`
+},
+
+coding: {
+    title: "⌨️ Programming",
+    text: `
+My programming interests include:
+
+• Python
+• HTML
+• CSS
+• JavaScript
+
+I want to learn how to build websites,
+applications and useful digital tools.
+
+My long-term interests also include
+automation, cybersecurity and AI.
+`
+},
+
+fitness: {
+    title: "🏋️ Fitness",
+    text: `
+Fitness is an important part of my lifestyle goals.
+
+My interests include:
+
+• Strength training.
+• Cardio.
+• Running.
+• Endurance.
+• Pull-ups and bodyweight exercises.
+
+My aim is to develop strength, stamina
+and a consistent healthy routine.
+`
+},
+
+psychology: {
+    title: "🧩 Psychology",
+    text: `
+I am interested in understanding the human mind.
+
+Topics that interest me:
+
+• Human behaviour.
+• Personality.
+• Emotions.
+• Decision-making.
+• Cognitive psychology.
+• Human relationships.
+
+Psychology is also one of my potential
+higher education interests.
+`
+},
+
+adventure: {
+    title: "🏔️ Adventure",
+    text: `
+I love the idea of exploring nature
+and experiencing challenging adventures.
+
+My interests include:
+
+• Mountain exploration.
+• Hiking.
+• Trekking.
+• Nature.
+• Outdoor adventures.
+
+I want to explore more of the world
+and experience different environments.
+`
+},
+
+cs2: {
+    title: "🔫 Counter-Strike 2",
+    text: `
+CS2 is one of my favourite games.
+
+My interests:
+
+• Competitive gameplay.
+• Aim improvement.
+• Clutch situations.
+• Game mechanics.
+• Skins and customization.
+
+I enjoy casual matches and improving
+my individual performance.
+
+My sensitivity: 2.1
+Zoom sensitivity multiplier: 1.4
+`
+},
+
+minecraft: {
+    title: "⛏️ Minecraft",
+    text: `
+Minecraft is another game I really enjoy.
+
+I enjoy:
+
+• Survival gameplay.
+• Building underground bases.
+• Farming.
+• Villager trading.
+• XP farms.
+• Iron farms.
+• Shaders and optimization mods.
+
+I have worked on a survival base containing
+a bedroom, storage room, library, working area,
+furnace room and different viewing areas.
+
+I also enjoy experimenting with Fabric mods
+and shaders.
+`
+},
+
+pc: {
+    title: "🖥️ My Computer Specifications",
+    text: `
+MY DESKTOP SETUP
+
+CPU:
+AMD Ryzen 5 5600
+
+GPU:
+Intel Arc A380
+
+RAM:
+16GB DDR4
+
+STORAGE:
+512GB SSD
+
+OPERATING SYSTEM:
+Windows 11
+
+MY INTERESTS:
+
+• High-performance gaming PCs.
+• RTX graphics cards.
+• Fast NVMe storage.
+• High refresh rate monitors.
+• PC optimization.
+
+Dream setup: A powerful high-end gaming PC.
+`
+},
+
+business: {
+    title: "💰 Business & Finance",
+    text: `
+I am interested in entrepreneurship
+and building independent sources of income.
+
+Topics I want to explore:
+
+• Starting a business.
+• Real estate.
+• Digital businesses.
+• Financial management.
+• Technology-based services.
+• Entrepreneurship.
+
+My long-term ambition is to build
+financial independence through knowledge,
+skills and smart decisions.
+`
+},
+
+abroad: {
+    title: "🌍 International Future",
+    text: `
+I am interested in international education
+and exploring opportunities outside Bangladesh.
+
+Countries I have previously been curious about:
+
+• New Zealand.
+• Finland.
+• Norway.
+• Greece.
+
+I am interested in higher education,
+new cultures and international opportunities.
+
+Psychology is one of my academic interests.
+`
+},
+
+mountains: {
+    title: "🏔️ Mountain Dreams",
+    text: `
+One of my biggest adventure dreams
+is to explore the world's great mountains.
+
+Some mountains on my dream list:
+
+• Mount Everest.
+• K2.
+• Annapurna.
+
+Mountain exploration requires proper training,
+experience, preparation and professional guidance.
+
+For now, this remains a long-term ambition.
+`
+}
+
+};
+
+
+/* MODAL FUNCTIONS */
+
+function openModal(key) {
+
+    const data = information[key];
+
+    if (!data) return;
+
+    document.getElementById("modalTitle").innerText =
+        data.title;
+
+    document.getElementById("modalText").innerText =
+        data.text;
+
+    document.getElementById("modal").style.display =
+        "flex";
+
+}
+
+function closeModal() {
+
+    document.getElementById("modal").style.display =
+        "none";
+
+}
+
+function outsideClose(event) {
+
+    if (event.target.id === "modal") {
+        closeModal();
+    }
+
+}
+
+
+/* CALCULATOR */
+
+const display = document.getElementById("display");
+
+function add(value) {
+
+    display.value += value;
+
+}
+
+function clearDisplay() {
+
+    display.value = "";
+
+}
+
+function del() {
+
+    display.value = display.value.slice(0,-1);
+
+}
+
+function calculate() {
+
+    try {
+
+        const expression = display.value;
+
+        if (!expression ||
+            !/^[0-9+\-*/%.() ]+$/.test(expression)) {
+            throw new Error("Invalid");
+        }
+
+        const result = Function(
+            '"use strict"; return (' + expression + ')'
+        )();
+
+        if (!Number.isFinite(result)) {
+            throw new Error("Invalid");
+        }
+
+        display.value = String(
+            Number(result.toFixed(10))
+        );
+
+    }
+
+    catch {
+
+        display.value = "Error";
+
+    }
+
+}
+
+
+/* KEYBOARD SUPPORT */
+
+document.addEventListener("keydown", function(e) {
+
+    if (/^[0-9+\-*/%.()]$/.test(e.key)) {
+
+        add(e.key);
+
+    }
+
+    else if (e.key === "Enter") {
+
+        calculate();
+
+    }
+
+    else if (e.key === "Backspace") {
+
+        del();
+
+    }
+
+    else if (e.key === "Escape") {
+
+        clearDisplay();
+        closeModal();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
